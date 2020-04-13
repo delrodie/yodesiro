@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use http\Exception\InvalidArgumentException;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"username"}, message="Ce nom utilisateur existe déjà.")
+ * @UniqueEntity(fields={"email"}, message="Cet adresse email existe déjà.")
  */
 class User implements UserInterface
 {
@@ -39,6 +41,11 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    public function __construct()
+    {
+        $this->roles = ['ROLE_USER'];
+    }
 
     public function getId(): ?int
     {
@@ -84,15 +91,21 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        return $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        //return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
+        if (!in_array('ROLE_USER', $roles)) $roles[] = 'ROLE_USER';
+        foreach ($roles as $role){
+            if (substr($role, 0, 5) !== 'ROLE_'){
+                throw new InvalidArgumentException("Chaque role doit commencer par ROLE");
+            }
+        }
         $this->roles = $roles;
 
         return $this;
