@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log{% endblock %}
+
+{% block body %}
+    <table id="monitoring" class="display" style="width: 100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DATES</th>
+                <th>UTILISATEURS</th>
+                <th>ACTIONS</th>
+                <th>IP</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fichier in fichiers %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ fichier.datetime|date('H:i:s') }}</td>
+                <td>{{ fichier.context.username }}</td>
+                <td>{{ fichier.message }}</td>
+                <td>
+                    <a href="http://api.ipstack.com/{{ fichier.context.ip }}?access_key=8946a56d682403bfecc9ebec65979610" target="_blank">
+                        {{ fichier.context.ip }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#monitoring').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            } );
+        } );
+    </script>
+{% endblock %}

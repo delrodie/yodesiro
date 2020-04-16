@@ -2,13 +2,23 @@
 
 namespace App\Controller;
 
+use App\Utilities\GestionLog;
+use App\Utilities\GestionMail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AccueilController extends AbstractController
 {
+    private $gestMail;
+    private $log;
+
+    public function __construct(GestionMail $gestionMail, GestionLog $log)
+    {
+        $this->gestMail= $gestionMail;
+        $this->log = $log;
+    }
+
     /**
      * @Route("/", name="app_accueil")
      */
@@ -22,16 +32,10 @@ class AccueilController extends AbstractController
     /**
      * @Route("/dashboard", name="app_dashboard")
      */
-    public function dashboard(MailerInterface $mailer)
+    public function dashboard(Request $request)
     {
-        $email =(new Email())
-            ->from('delrodieamoikon@gmail.com')
-            ->to('delrodieamoikon@gmail.com')
-            ->subject('Connexion')
-            ->text('lecorps')
-            ->html('le corps')
-            ;
-        $mailer->send($email);
+        $user = $this->getUser();
+        $this->log->addLog($user, 'dashboard', $request->getClientIp());
         return $this->render("accueil/index.html.twig");
     }
 }

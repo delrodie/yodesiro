@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
+use App\Utilities\GestionMail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,13 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegistrationController extends AbstractController
 {
+    private $gestMail;
+
+    public function __construct(GestionMail $gestionMail)
+    {
+        $this->gestMail = $gestionMail;
+    }
+
     /**
      * @Route("/register", name="app_register")
      */
@@ -40,7 +48,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            // Envoie de mail de confirmation d'inscription
+            $this->gestMail->envoiMail("Confirmation d'inscription", $user, 0);
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
