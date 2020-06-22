@@ -29,7 +29,8 @@ class GestionMail
         $email = (new \Swift_Message('COMMANDE DE CDs Ref.: '. $commande->getReference()))
             ->setFrom('info@dreammaker-ci.com', 'DREAM MAKER')
             ->setTo($commande->getEmail())
-            ->setBcc(['delrodieamoikon@gmail.com','infor@dreammaker-ci.com','adama@dreammaker-ci.com','michel@dreammaker-ci.com'])
+            ->setBcc('delrodieamoikon@gmail.com')
+            //->setBcc(['delrodieamoikon@gmail.com','infor@dreammaker-ci.com','adama@dreammaker-ci.com','michel@dreammaker-ci.com'])
             ->setBody(
                 $this->template->render('accueil/email.html.twig',[
                     'commande' => $commande,
