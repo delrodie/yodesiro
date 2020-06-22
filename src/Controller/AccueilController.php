@@ -57,6 +57,8 @@ class AccueilController extends AbstractController
             $entityManager->persist($commande);
             $entityManager->flush();
 
+            $this->gestMail->envoiMail($commande);
+
             return $this->redirectToRoute('commande_show',['reference' => $commande->getReference()]);
         }
 

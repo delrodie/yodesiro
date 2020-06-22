@@ -4,30 +4,38 @@
 namespace App\Utilities;
 
 
+use Twig\Environment;
+
 class GestionMail
 {
     private $swift_mail;
+    private $template;
 
-    public function __construct(\Swift_Mailer $swift_mail)
+    public function __construct(\Swift_Mailer $swift_mail, Environment $template)
     {
         $this->swift_mail= $swift_mail;
+        $this->template = $template;
     }
 
     /**
      * Envoie de mail apres action
      *
-     * @param $objet
-     * @param $user
-     * @param null $code
+     * @param $commande
      * @return bool
      */
-    public function envoiMail($objet, $user, $code = null)
+    public function envoiMail($commande)
     {
         // Envoi de mail de
-        $email = (new \Swift_Message($objet))
-            ->setFrom('delrodieamoikon@gmail.com')
-            ->setTo($user->getEmail())
-            ->setBody($this->contenu($code))
+        $email = (new \Swift_Message('COMMANDE DE CDs Ref.: '. $commande->getReference()))
+            ->setFrom('info@dreammaker-ci.com', 'DREAM MAKER')
+            ->setTo($commande->getEmail())
+            ->setBcc(['delrodieamoikon@gmail.com','infor@dreammaker-ci.com','adama@dreammaker-ci.com','michel@dreammaker-ci.com'])
+            ->setBody(
+                $this->template->render('accueil/email.html.twig',[
+                    'commande' => $commande,
+                ]),
+                'text/html'
+            )
             ;
         $this->swift_mail->send($email);
 
