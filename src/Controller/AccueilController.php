@@ -30,6 +30,14 @@ class AccueilController extends AbstractController
     }
 
     /**
+     * @Route("/commande/e", name="commande_tempo")
+     */
+    public function commande()
+    {
+        return $this->render('accueil/commande.html.twig');
+    }
+
+    /**
      * @Route("/dashboard", name="app_dashboard")
      */
     public function dashboard(Request $request)

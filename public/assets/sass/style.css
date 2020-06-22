@@ -1,0 +1,90 @@
+/*******************
+ * COMMANDE DE CD
+ */
+@import url("../vendor/font-awesome.min.css");
+@import url("../vendor/animate.css");
+@import url("../vendor/owl.carousel.css");
+@import url("../vendor/owl.theme.css");
+@import url("../vendor/hover.css");
+@import url("../vendor/magnific-popup.css");
+@import url("../vendor/text-animation.css");
+@import url("../vendor/vegas.min.css");
+@import url("../vendor/jquery-ui.min.css");
+@import url("../vendor/master-style.css");
+@import url("../vendor/bootstrap.min.css");
+.tagline .hd {
+  color: #ffffff;
+}
+
+.commande {
+  width: 500px;
+  height: 65px;
+  margin: auto;
+  position: relative;
+  padding: 1px;
+}
+
+.commande #commande {
+  width: 100%;
+  height: 100%;
+}
+
+.commande-form .form-group .form-control {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding-left: 20px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  border: 1px solid;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+}
+
+.commande .message.error-text {
+  position: relative;
+  top: 8px;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
+
+.commande i.error-text,
+.commande i {
+  position: absolute;
+  top: 15px;
+  right: 150px;
+  font-size: 30px;
+}
+
+.commande-form .form-group input:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #fff;
+}
+
+#commande ::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #fff;
+}
+
+#commande :-moz-placeholder {
+  font-size: 16px;
+  color: #fff;
+  opacity: 1;
+}
+
+#commande ::-moz-placeholder {
+  font-size: 16px;
+  color: #fff;
+  opacity: 1;
+}
+
+#commande :-ms-input-placeholder {
+  font-size: 16px;
+  color: #fff;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,12 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}SYMFONY 5 ::{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+            <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/style.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/responsive.css')) }}">
+        {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body class="slideshow-bg">
+        <div class="page-loader-wrapper vhm">
+            <div class="loader-inner-wrp vhm-item">
+                <img src="{{ absolute_url(asset('assets/images/pageloader.gif')) }}" alt="pageloader">
+            </div>
+        </div>
+        <div class="main-wrapper bg-wrapper" data-background="images/main-bg.jpg">
+
+            <div class="overlay"></div>
+
+            <div class="container full-width">
+                <div class="row">
+
+                    <div class="equal-part"></div>
+
+                    <div class="social-icon-wrp desk">
+                        <ul class="social-icon">
+                            <li>
+                                <a class="vhm" href="#">
+                                    <i class="fab fa-facebook vhm-item"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="vhm" href="#">
+                                    <i class="fab fa-twitter vhm-item"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="vhm" href="#">
+                                    <i class="fab fa-google-plus vhm-item"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LOGO -->
+                    <div class="logo-wrapper">
+                        <a href="#" class="logo">
+                            <img src="{{ absolute_url(asset('assets/images/logo.png')) }}" alt="Logo">
+                        </a>
+                    </div>
+
+                    <div id="cover-page" class="col-md-4 coloumn left vhm">
+
+                        <div class="vhm-item" id="countdown_dashboard" data-wow-delay="0.2" data-day="03" data-month="7" data-year="2020"
+                             data-hr="0" data-min="0" data-sec="0">
+
+                            <div class="inner-dashboard">
+
+                                <div class="days">
+                                    <div class="dash days_dash">
+                                        <div class="inner-dash clearfix">
+                                            <div class="digit">0</div>
+                                            <div class="digit">0</div>
+                                            <div class="digit">0</div>
+                                        </div>
+                                        <span class="dash_title">
+										<span class="text">Jours restants</span>
+									</span>
+                                    </div>
+                                </div>
+
+                                <div class="time">
+                                    <div class="inner-dash clearfix">
+
+                                        <div class="dash hours_dash">
+                                            <div class="inner-dash clearfix">
+                                                <div class="digit">0</div>
+                                                <div class="digit">0</div>
+                                            </div>
+                                            <span class="dash_title">H</span>
+                                        </div>
+
+                                        <!-- MINIUTES -->
+                                        <div class="dash minutes_dash">
+                                            <div class="inner-dash clearfix">
+                                                <div class="digit">0</div>
+                                                <div class="digit">0</div>
+                                            </div>
+                                            <span class="dash_title">Min</span>
+                                        </div>
+
+                                        <!-- SECONDS -->
+                                        <div class="dash seconds_dash">
+                                            <div class="inner-dash clearfix">
+                                                <div class="digit">0</div>
+                                                <div class="digit">0</div>
+                                            </div>
+                                            <span class="dash_title">Sec</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}
+            <script src="{{ absolute_url(asset('assets/js/jquery-1.11.3.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/jquery-ui.min.js')) }}"></script>
+
+            <script src="{{ absolute_url(asset('assets/js/plugin.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/jquery.lwtCountdown-1.0.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/jquery.magnific-popup.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/notifyMe.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/text-animation.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/vegas.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/slideshow.js')) }}"></script>
+
+            <script src="{{ absolute_url(asset('assets/js/common.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/responsive.js')) }}"></script>
+        {% endblock %}
     </body>
 </html>

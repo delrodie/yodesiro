@@ -3,18 +3,74 @@
 {% block title %}{{ parent ()}} Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Base de symfony 5</h1>
+    <div id="page-container" class="col-md-8 coloumn right vhm home-page">
+        <div class="inner-container home-pg vhm-item">
 
-    <ul>
-        <li>Connexion<code><a href="{{ path('app_login') }}">Connexion</a></code></li>
-        <li> <code><a href="{{ path('app_register') }}">S'inscrire</a></code></li>
-        <li> <code><a href="{{ path('app_monitoring') }}">Log</a></code></li>
-    </ul>
-</div>
+            <div class="page" id="home">
+                <div class="container align-center">
+
+                    <div class="clock-wrp vhm">
+
+                    </div>
+
+                    <div class="tagline">
+                        <h1 class="hd">YODE & SIRO</h1>
+                        <span class="separator"><span></span></span>
+                    </div>
+
+                    <section class="cd-intro">
+                        <h1 class="cd-headline rotate-1">
+                            <span style="font-size: 2.1rem;">Pourquoi commander ses CD avant la sortie  officielle ?</span>
+                            <span class="cd-words-wrapper">
+											<b class="is-visible" style="font-size: 2.5rem;">Privilège d'être dédicacé</b>
+											<b style="font-size: 2.5rem;">Soutenir la culture </b>
+											<b style="font-size: 2.5rem;">POsitionner son groupe</b>
+                                    </span>
+                        </h1>
+                    </section>
+
+                    <a class="btn btn-color page-to-page" data-page="{{ path('commande_tempo')}}" href="{{ path('commande_tempo')}}" role="button">Commander</a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="inner-container ajax-pg vhm-item">
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function notifyMe(){
+            var page = {{ path('commande_tempo')}};
+            var from_location = ".inner-container.home-pg";
+            var to_location = ".inner-container.ajax-pg";
+            var home_page = "#page-container .inner-container.home-pg .page";
+            var page_container = "#page-container";
+            var ajax_page_wrapper = "#page-container .inner-container.ajax-pg";
+            var ajax_page = "#page-container .inner-container.ajax-pg .page";
+
+            $(".page-to-page").on("click", function(){
+                $(home_page).stop().animate({
+                    top: "-30px",
+                    opacity: 0
+                }, 800, function(){
+                    $(page_container).removeClass("home-page");
+                    $.post(page, function(data){
+                        $(ajax_page_wrapper).html(data);
+                        owlCarouselWidget();
+                        $(ajax_page).css("top", "-30px");
+                        $(ajax_page).stop().animate({
+                            top: "0px",
+                            opacity: 1
+                        }, 800);
+                    });
+                });
+            });
+        }
+    </script>
 {% endblock %}
