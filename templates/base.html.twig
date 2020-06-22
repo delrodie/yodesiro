@@ -5,6 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}DREAMMAKER ::{% endblock %}</title>
+        <meta name="keywords" content="Yode & Siro, Yode, Siro, zouglou, heritage"  />
+        <meta name="description" content="Plateforme de commande des CDs de Yode & Siro." />
+
+        <link rel="canonical" href="{{ absolute_url(path('app_accueil')) }}" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="Item" />
+        <meta property="og:title" content="Commande de CDs des Yode et Siro" />
+        <meta property="og:description" content="Plateforme de commande des CDs de Yode & Siro." />
+        <meta property="og:url" content="{{ absolute_url(path('app_accueil')) }}" />
+        <meta property="og:site_name" content="Dream Maker" />
+        <meta property="og:image" content="{{ absolute_url(asset('assets/images/bg/03.jpg')) }}" />
         {% block stylesheets %}
             <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
             <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
