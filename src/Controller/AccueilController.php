@@ -8,6 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Commande;
+use App\Form\CommandeType;
+use App\Repository\CommandeRepository;
+
 class AccueilController extends AbstractController
 {
     private $gestMail;
@@ -24,17 +28,42 @@ class AccueilController extends AbstractController
      */
     public function index()
     {
+
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
         ]);
     }
 
     /**
-     * @Route("/commande/e", name="commande_tempo")
+     * @Route("/commande", name="commande_valide", methods={"GET","POST"})
      */
-    public function commande()
+    public function commande(Request $request)
     {
-        return $this->render('accueil/commande.html.twig');
+
+        $commande = new Commande();
+        $form = $this->createForm(CommandeType::class, $commande);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $reference = time();
+            $commande->setReference($reference);
+            $commande->setFlag(1);
+
+            // Calcul du montant
+            $montant = 5000 * $commande->getQuantite();
+            $commande->setMontant($montant);
+
+            $entityManager->persist($commande);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commande_show',['reference' => $commande->getReference()]);
+        }
+
+        return $this->render("commande/new.html.twig", [
+            'commande' => $commande,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

@@ -30,7 +30,7 @@
                         </h1>
                     </section>
 
-                    <a class="btn btn-color page-to-page" data-page="{{ path('commande_tempo')}}" href="{{ path('commande_tempo')}}" role="button">Commander</a>
+                    <a class="btn btn-color page-to-page" data-page="#" href="{{ path('commande_valide') }}" role="button">Commander</a>
 
                 </div>
             </div>
@@ -46,7 +46,7 @@
     {{ parent() }}
     <script>
         function notifyMe(){
-            var page = {{ path('commande_tempo')}};
+            var page = {{ asset('commande/new.html.twig') }};
             var from_location = ".inner-container.home-pg";
             var to_location = ".inner-container.ajax-pg";
             var home_page = "#page-container .inner-container.home-pg .page";

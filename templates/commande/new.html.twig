@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent ()}} Accueil{% endblock %}
+
+{% block body %}
+    <div id="page-container" class="col-md-8 coloumn right vhm home-page" style="background:url("{{ asset('assets/images/bg/01.jpg') }}");">
+        <div class="inner-container home-pg vhm-item">
+
+            <div class="page" id="home">
+                <div class="container align-center">
+
+                    <div class="clock-wrp vhm">
+
+                    </div>
+
+                    <div class="tagline">
+                        <h1 class="hd" style="color: white">Formulaire de commande</h1>
+                        <span class="separator"><span></span></span>
+                        <p style="color: white; font-size: 2.4rem;">Le coût unitaire du CD est 5.000 FCFA</p>
+                    </div>
+
+                    <div class="commande">
+                        {{ include('commande/_form.html.twig') }}
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="inner-container ajax-pg vhm-item">
+
+        </div>
+    </div>
+{% endblock %}
+
