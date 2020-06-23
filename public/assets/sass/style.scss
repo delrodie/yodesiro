@@ -62,3 +62,16 @@
 #commande :-moz-placeholder { font-size: 16px; color: #fff; opacity: 1; }
 #commande ::-moz-placeholder { font-size: 16px; color: #fff; opacity: 1; }
 #commande :-ms-input-placeholder { font-size: 16px; color: #fff; }
+
+
+.days .dash_title {
+  .text-jourj{
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}

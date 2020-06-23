@@ -87,6 +87,14 @@
   color: #fff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.days .dash_title .text-jourj {
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 10px;
+  margin-top: 10px;
+}
 
 /*# sourceMappingURL=style.css.map */

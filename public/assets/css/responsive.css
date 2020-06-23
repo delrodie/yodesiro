@@ -3,11 +3,6 @@
 }
 @media only screen and (min-width: 1200px) and (max-width: 1499px){
 
-
-    .portfolio-wrp{ width: auto; }
-
-    .form-wrapper #cntForm{ width: auto; }
-
     .commande{ width: auto; }
 
 }
@@ -37,25 +32,6 @@
     ---------------------------------*/
     .info-box{ width: 90%; margin: auto; }
 
-    /*	PORTFOLIO PAGE
-    ---------------------------------*/
-    .portfolio-wrp{ width: auto; }
-    .img-box .img-wrapper .img{
-        min-width: 0;
-        min-height: 0;
-        padding: 15px;
-    }
-
-    /*	CONTACT-US PAGE
-    ---------------------------------*/
-    .form-wrapper #cntForm{ width: auto; }
-    .contact-box .text p,
-    .contact-box .text a{
-        font-size: 14px;
-    }
-
-    /*	SUBSCRIBE PAGE
-    ---------------------------------*/
     .commande{ width: auto; }
 }
 
@@ -68,7 +44,8 @@
 
     /*	LAYOUT
     ---------------------------------*/
-    .page .container{ width: 70%; }
+    .page .container{ width: 70%;
+        margin-bottom: 100px; }
 
     /*	GENERAL
     ---------------------------------*/
@@ -79,28 +56,10 @@
     /*	COVER PAGE
     ---------------------------------*/
     #cover-page{ min-height: 0 !important; }
-    .equal-part{ display: none; }
-    .navigation-wrapper{
-        width: 0;
-        height: 100%;
-        left: 50%;
-        margin-left: 0;
-    }
-    .navigation-wrapper .inner-wrapper{
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-    .navigation-wrapper .menu-icon{
-        position: fixed;
-        top: 40px !important;
-        left: initial;
-        right: 40px;
-        margin-top: 0;
-    }
-    .navigation li .navigation-link{ font-size: 18px; }
 
-    .days .dash .digit{ font-size: 130px; min-width: 75px; }
+
+    .days .dash .digit{ font-size: 130px; min-width: 75px;
+        margin-top: 300px; }
     .days .dash_title .text{ font-size: 28px; }
 
     /*	HOME PAGE
@@ -178,7 +137,8 @@
         margin-top: 0;
     }
 
-    .days .dash .digit{ font-size: 110px; min-width: 64px; }
+    .days .dash .digit{ font-size: 110px; min-width: 64px;
+        margin-top: 250px; }
     .days .dash_title .text{ font-size: 24px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 10px; }
@@ -299,7 +259,8 @@
     }
 
     #countdown_dashboard .days{ margin-bottom: 15px; }
-    .days .dash .digit{ font-size: 90px; min-width: 52px; }
+    .days .dash .digit{ font-size: 90px; min-width: 52px;
+        margin-top: 220px; }
     .days .dash_title .text{ font-size: 22px; padding: 10px 10px 14px 10px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 8px; }
@@ -390,11 +351,16 @@
     }
 
     #countdown_dashboard .days{ margin-bottom: 15px; }
-    .days .dash .digit{ font-size: 70px; min-width: 42px; }
+    .days .dash .digit{ font-size: 70px; min-width: 42px;
+        margin-top: 300px; }
     .days .dash_title .text{ font-size: 18px; padding: 10px 10px 14px 10px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 8px; }
     .dash .digit{ font-size: 30px; min-width: 18px; }
+
+    .days .dash_title .text-jourj{
+        padding: 10px 10px 14px 10px;
+    }
 
     @-webkit-keyframes sripple {
         from {
@@ -480,6 +446,10 @@
     ---------------------------------*/
     .commande-form .btn{ position: inherit; margin-top: 10px; }
     .commande i.error-text{ top: 20px; right: 20px; }
+
+
+
+
 
 }
 @media only screen and (min-width: 320px) and (max-width: 767px){
