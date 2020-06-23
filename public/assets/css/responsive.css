@@ -57,9 +57,11 @@
     ---------------------------------*/
     #cover-page{ min-height: 0 !important; }
 
-
-    .days .dash .digit{ font-size: 130px; min-width: 75px;
-        margin-top: 300px; }
+    .days{
+        margin-top: 300px;
+    }
+    .days .dash .digit{ font-size: 130px; min-width: 75px;}
+    .days .dash_title .text{ font-size: 28px; }
     .days .dash_title .text{ font-size: 28px; }
 
     /*	HOME PAGE
@@ -137,8 +139,11 @@
         margin-top: 0;
     }
 
-    .days .dash .digit{ font-size: 110px; min-width: 64px;
-        margin-top: 250px; }
+    .days{
+        margin-top: 250px;
+    }
+
+    .days .dash .digit{ font-size: 110px; min-width: 64px;}
     .days .dash_title .text{ font-size: 24px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 10px; }
@@ -258,9 +263,9 @@
         }
     }
 
-    #countdown_dashboard .days{ margin-bottom: 15px; }
+    #countdown_dashboard .days{ margin-bottom: 15px; margin-top: 250px; }
     .days .dash .digit{ font-size: 90px; min-width: 52px;
-        margin-top: 220px; }
+        }
     .days .dash_title .text{ font-size: 22px; padding: 10px 10px 14px 10px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 8px; }
@@ -350,9 +355,9 @@
         margin-top: 0;
     }
 
-    #countdown_dashboard .days{ margin-bottom: 15px; }
+    #countdown_dashboard .days{ margin-bottom: 15px; margin-top: 300px; }
     .days .dash .digit{ font-size: 70px; min-width: 42px;
-        margin-top: 300px; }
+        }
     .days .dash_title .text{ font-size: 18px; padding: 10px 10px 14px 10px; }
     .days .dash_title{ margin-top: 0; }
     .time .dash{ padding: 0 8px; }
