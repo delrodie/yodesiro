@@ -19,6 +19,27 @@ class CommandeRepository extends ServiceEntityRepository
         parent::__construct($registry, Commande::class);
     }
 
+    /**
+     * Quantité totale de commande
+     *
+     * @return int|mixed|string
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getQuantite()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('sum(c.quantite)')
+            ->getQuery()->getSingleScalarResult();
+    }
+
+    public function getMontant()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('sum(c.montant)')
+            ->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Commande[] Returns an array of Commande objects
     //  */

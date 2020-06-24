@@ -30,7 +30,7 @@ class GestionMail
             ->setFrom('info@dreammaker-ci.com', 'DREAM MAKER')
             ->setTo($commande->getEmail())
             //->setBcc('delrodieamoikon@gmail.com')
-            ->setBcc(['delrodieamoikon@gmail.com','infor@dreammaker-ci.com','adama@dreammaker-ci.com','michel@dreammaker-ci.com'])
+            ->setBcc(['delrodieamoikon@gmail.com','infor@dreammaker-ci.com','adama@dreammaker-ci.com','michel@dreammaker-ci.com', 'kadama00226@gmail.com'])
             ->setBody(
                 $this->template->render('accueil/email.html.twig',[
                     'commande' => $commande,

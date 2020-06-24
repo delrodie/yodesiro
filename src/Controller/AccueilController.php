@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Utilities\GestionLog;
 use App\Utilities\GestionMail;
+use MongoDB\Driver\Command;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,11 +17,13 @@ class AccueilController extends AbstractController
 {
     private $gestMail;
     private $log;
+    private $commandeReposiroty;
 
-    public function __construct(GestionMail $gestionMail, GestionLog $log)
+    public function __construct(GestionMail $gestionMail, GestionLog $log, CommandeRepository $commandeReposiroty)
     {
         $this->gestMail= $gestionMail;
         $this->log = $log;
+        $this->commandeReposiroty = $commandeReposiroty;
     }
 
     /**
@@ -69,12 +72,16 @@ class AccueilController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard", name="app_dashboard")
+     * @Route("/dashboard/", name="app_dashboard")
      */
     public function dashboard(Request $request)
     {
         $user = $this->getUser();
         $this->log->addLog($user, 'dashboard', $request->getClientIp());
-        return $this->render("accueil/index.html.twig");
+        return $this->render("accueil/dashboard.html.twig",[
+            'commandes' => $this->commandeReposiroty->findAll(),
+            'quantite_totale' => $this->commandeReposiroty->getQuantite(),
+            'montant_total' => $this->commandeReposiroty->getMontant(),
+        ]);
     }
 }
