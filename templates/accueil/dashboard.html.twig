@@ -79,13 +79,13 @@
             <div class="col-md-4 offset-md-2">
                 <div class="milestone-counter">
                     <span class="stat-count highlight">{{ quantite_totale }}</span>
-                    <div class="milestone-details">Quantités</div>
+                    <div class="milestone-details">Albums</div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="milestone-counter">
-                    <span class="stat-count highlight">{{ montant_total }}</span>
-                    <div class="milestone-details">Montant</div>
+                    <span class="highlight">{{ montant_total|number_format(0,'','.') }}</span>
+                    <div class="milestone-details">F CFA</div>
                 </div>
             </div>
         </div><!-- stat -->
