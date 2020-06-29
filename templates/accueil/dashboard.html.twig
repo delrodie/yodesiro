@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('app_dashboard') }}">Accueil <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,9 +68,34 @@
                         <a class="dropdown-item" href="#">Livrées</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Localisation
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Abobo'}) }}">Abobo</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Adjame'}) }}">Adjamé</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Attecoube'}) }}">Attecoubé</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Bingerville'}) }}">Bingerville</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Cocody'}) }}">Cocody</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Grand Bassam'}) }}">Grand Bassam</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Koumassi'}) }}">Koumassi</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Marcory'}) }}">Marcory</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Plateau'}) }}">Plateau</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Port-Bouet'}) }}">Port-Bouet</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Treichville'}) }}">Treichville</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Yopougon'}) }}">Yopougon</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Autre'}) }}">Autres</a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('maintenance_index') }}">Filtre</a>
                 </li>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('maintenance_affectation') }}">Affectation</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -81,7 +106,7 @@
         <div class="row stat">
             <div class="col-md-4 offset-md-2">
                 <div class="milestone-counter">
-                    <span class="stat-count highlight">{{ quantite_totale }}</span>
+                    <span class="highlight">{{ quantite_totale|number_format(0,'','.') }}</span>
                     <div class="milestone-details">Albums</div>
                 </div>
             </div>
@@ -120,7 +145,7 @@
                 </td>
                 <td>
                     {{ commande.nom|title }} <br>
-                    <small>{{ commande.adresse }}</small>
+                    <small>{{ commande.adresse }} {% if commande.commune %}<span class="badge badge-danger">Affecté</span>   {% endif %}</small>
                 </td>
                 <td class="text-center">{{ commande.tel }}</td>
                 <td class="text-center">{{ commande.quantite }}</td>

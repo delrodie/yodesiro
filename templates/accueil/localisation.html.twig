@@ -67,8 +67,31 @@
                         <a class="dropdown-item" href="#">Livrées</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Localisation
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Abobo'}) }}">Abobo</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Adjame'}) }}">Adjamé</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Attecoube'}) }}">Attecoubé</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Bingerville'}) }}">Bingerville</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Cocody'}) }}">Cocody</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Grand Bassam'}) }}">Grand Bassam</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Koumassi'}) }}">Koumassi</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Marcory'}) }}">Marcory</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Plateau'}) }}">Plateau</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Port-Bouet'}) }}">Port-Bouet</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Treichville'}) }}">Treichville</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Yopougon'}) }}">Yopougon</a>
+                        <a class="dropdown-item" href="{{ path('maintenance_commune', {'commune': 'Autre'}) }}">Autres</a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('maintenance_index') }}">Filtre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('maintenance_affectation') }}">Affectation</a>
                 </li>
             </ul>
         </div>
@@ -97,12 +120,36 @@
     <h1 class="mb-5">Gestion des commandes</h1>
 
     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            {{ include('commande/_form.html.twig', {'button_label': 'Modifier'}) }}
+        <div class="col-md-8 offset-md-2">
+            <form action="{{ path('maintenance_affectation') }}" class="commande-form clear form-field-wrapper">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <select name="commune" id="" class="form-control">
+                            <option value="Abobo">Abobo</option>
+                            <option value="Adjame">Adjame</option>
+                            <option value="Attecoube">Attecoube</option>
+                            <option value="Bingerville">Bingerville</option>
+                            <option value="Cocody">Cocody</option>
+                            <option value="Grand Bassam">Grand Bassam</option>
+                            <option value="Koumassi">Koumassi</option>
+                            <option value="Marcory">Marcory</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Port-Bouet">Port-Bouet</option>
+                            <option value="Treichville">Treichville</option>
+                            <option value="Yopougon">Yopougon</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="quartier" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
-    {{ include('commande/_delete_form.html.twig') }}
 </div>
 
 {% block javascripts %}

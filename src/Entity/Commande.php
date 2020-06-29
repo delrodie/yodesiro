@@ -61,6 +61,11 @@ class Commande
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $commune;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -175,6 +180,18 @@ class Commande
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCommune(): ?string
+    {
+        return $this->commune;
+    }
+
+    public function setCommune(?string $commune): self
+    {
+        $this->commune = $commune;
 
         return $this;
     }
