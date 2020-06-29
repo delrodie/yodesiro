@@ -67,17 +67,19 @@ class MaintenanceController extends AbstractController
     public function affectation(Request $request)
     {
         $commune = $request->get('commune');
-        $quartier = $request->get('quartier'); //dd($quartier);
+        $quartier = $request->get('quartier'); //dd($commune);
 
-        // Recherche de la commune concernée
-        $em = $this->getDoctrine()->getManager();
-        $commandes = $this->commandeRepository->findByAdresse($quartier); //dd($commandes);
-        if ($commandes){
-            foreach ($commandes as $commande){
-                $commande->setCommune($commune);
-                $em->flush();
+        if ($commune){
+            // Recherche de la commune concernée
+            $em = $this->getDoctrine()->getManager();
+            $commandes = $this->commandeRepository->findByAdresse($quartier); //dd($commandes);
+            if ($commandes){
+                foreach ($commandes as $commande){
+                    $commande->setCommune($commune);
+                    $em->flush();
+                }
+                return $this->redirectToRoute('maintenance_commune',['commune'=>$commune]);
             }
-            return $this->redirectToRoute('maintenance_commune',['commune'=>$commune]);
         }
 
         return $this->render("accueil/localisation.html.twig",[
