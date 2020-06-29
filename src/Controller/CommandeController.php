@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
+use App\Utilities\GestionLog;
+use App\Utilities\GestionMail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CommandeController extends AbstractController
 {
+    private $gestMail;
+    private $log;
+    private $commandeReposiroty;
+
+    public function __construct(GestionMail $gestionMail, GestionLog $log, CommandeRepository $commandeReposiroty)
+    {
+        $this->gestMail= $gestionMail;
+        $this->log = $log;
+        $this->commandeReposiroty = $commandeReposiroty;
+    }
+
     /**
      * @Route("/", name="commande_index", methods={"GET"})
      */
@@ -75,6 +88,8 @@ class CommandeController extends AbstractController
         return $this->render('commande/edit.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
+            'quantite_totale' => $this->commandeReposiroty->getQuantite(),
+            'montant_total' => $this->commandeReposiroty->getMontant(),
         ]);
     }
 
@@ -89,6 +104,6 @@ class CommandeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('commande_index');
+        return $this->redirectToRoute('app_dashboard');
     }
 }

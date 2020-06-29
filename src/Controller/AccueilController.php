@@ -84,4 +84,12 @@ class AccueilController extends AbstractController
             'montant_total' => $this->commandeReposiroty->getMontant(),
         ]);
     }
+
+    /**
+     * @route("/notification/quotidien", name="app_notification")
+     */
+    public function notification()
+    {
+        $this->gestMail->notification();
+    }
 }

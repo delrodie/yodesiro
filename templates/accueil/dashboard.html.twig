@@ -108,7 +108,13 @@
         {% for commande in commandes %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td class="text-center">{{ commande.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td class="text-center">
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <a href="{{ path('commande_edit', {'id': commande.id}) }}">{{ commande.createdAt|date('Y-m-d H:i:s') }}</a>
+                    {% else %}
+                        {{ commande.createdAt|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
                 <td>
                     {{ commande.nom|title }} <br>
                     <small>{{ commande.adresse }}</small>
