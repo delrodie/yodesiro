@@ -40,6 +40,32 @@ class CommandeRepository extends ServiceEntityRepository
             ->getQuery()->getSingleScalarResult();
     }
 
+    /**
+     * Recherche de l'existence de la commande
+     * 
+     * @param $nom
+     * @param $tel
+     * @param $quantite
+     * @param $id
+     * @return int|mixed|string
+     */
+    public function getExistance($nom, $tel, $quantite, $id)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.nom = :nom')
+            ->andWhere('c.tel = :tel')
+            ->andWhere('c.quantite = :qte')
+            ->andWhere('c.id <> :id')
+            ->setParameters([
+                'nom'=> $nom,
+                'tel' => $tel,
+                'qte' => $quantite,
+                'id' => $id
+            ])
+            ->getQuery()->getResult()
+            ;
+    }
+
     // /**
     //  * @return Commande[] Returns an array of Commande objects
     //  */
