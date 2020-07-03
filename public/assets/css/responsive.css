@@ -56,13 +56,9 @@
 ........................................................*/
 @media only screen and (min-width: 768px) and (max-width: 979px){
 
-    /*	LAYOUT
-    ---------------------------------*/
     .page .container{ width: 70%;
         margin-bottom: 100px; }
 
-    /*	GENERAL
-    ---------------------------------*/
     .title .hd{ font-size: 36px; }
     .title .separator{ margin-top: 22px; }
     .title p{ font-size: 24px; margin-top: 24px; }
@@ -111,6 +107,10 @@
     .cd-headline .cd-words-wrapper,
     .cd-headline .cd-words-wrapper b{ font-size: 30px;
         margin-top: 10px; }
+
+    .libelle{
+        margin-top: 500px;
+    }
 
 }
 
@@ -538,4 +538,8 @@
     /*	SUBSCRIBE PAGE
     ---------------------------------*/
     .commande{ width: auto; }
+
+    .libelle{
+        margin-top: 500px;
+    }
 }

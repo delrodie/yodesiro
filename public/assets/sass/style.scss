@@ -11,7 +11,7 @@
 @import url("../vendor/vegas.min.css");
 @import url("../vendor/jquery-ui.min.css");
 @import url("../vendor/master-style.css");
-@import url("../vendor/bootstrap.min.css");
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css");
 
 .tagline .hd{
   color: #ffffff;
@@ -73,5 +73,56 @@
     line-height: 1;
     padding: 10px;
     margin-top: 10px;
+  }
+}
+
+.libelle{
+  h3{
+    display: block;
+    border-bottom: 3px solid rgba(255,255,255,0.5);
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 10px;
+    margin-top: 10px;
+    color: goldenrod;
+    text-align: left;
+  }
+}
+.points-vente{
+  text-align: left;
+  li:hover{
+    color: goldenrod;
+    cursor: pointer;
+  }
+}
+
+.interieur{
+  h3{
+    font-size: 22px;
+    font-weight: bold;
+    color: goldenrod;
+    border-bottom: 3px solid rgba(255,255,255,0.5);
+  }
+
+  li{
+    padding-left: 20px;
+    color: white;
+    font-size: 1.9rem;
+
+    &:hover{
+      color: goldenrod;
+      cursor: pointer;
+    }
+  }
+}
+
+.nouvelle-commande{
+  h2{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    color: goldenrod;
   }
 }
